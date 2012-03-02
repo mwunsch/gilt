@@ -35,6 +35,7 @@ module Gilt
         end
         alias_method "#{store}_upcoming".intern, "upcoming_in_#{store}".intern
       end
+
     end
   end
 end

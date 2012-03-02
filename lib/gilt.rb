@@ -2,12 +2,6 @@ require "gilt/client"
 require "gilt/version"
 
 module Gilt
-  class Sale
-  end
-
-  class Product
-  end
-
-  class Sku
-  end
+  autoload :Sale, 'gilt/sale'
+  autoload :Product, 'gilt/product'
 end

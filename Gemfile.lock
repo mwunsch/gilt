@@ -1,0 +1,46 @@
+GIT
+  remote: git://github.com/mwunsch/weary.git
+  revision: cdff74b678e254de757d406ee2def4c07cd24f5b
+  specs:
+    weary (1.0.0.pre)
+      addressable (~> 2.2.6)
+      multi_json (~> 1.1.0)
+      promise (~> 0.3.0)
+      rack (~> 1.4.0)
+      simple_oauth (~> 0.1.5)
+
+PATH
+  remote: .
+  specs:
+    gilt-rb (0.0.1)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.7)
+    crack (0.3.1)
+    diff-lcs (1.1.3)
+    multi_json (1.1.0)
+    promise (0.3.0)
+    rack (1.4.1)
+    rspec (2.8.0)
+      rspec-core (~> 2.8.0)
+      rspec-expectations (~> 2.8.0)
+      rspec-mocks (~> 2.8.0)
+    rspec-core (2.8.0)
+    rspec-expectations (2.8.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.8.0)
+    simple_oauth (0.1.5)
+    webmock (1.7.10)
+      addressable (~> 2.2, > 2.2.5)
+      crack (>= 0.1.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  gilt-rb!
+  rspec (~> 2.8.0)
+  weary!
+  webmock (~> 1.7.10)

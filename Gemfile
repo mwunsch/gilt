@@ -4,3 +4,8 @@ source "http://rubygems.org"
 gemspec
 
 gem "weary", :git => "git://github.com/mwunsch/weary.git"
+
+group :test do
+  gem "rspec", "~> 2.8.0"
+  gem "webmock", "~> 1.7.10"
+end

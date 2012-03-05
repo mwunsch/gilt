@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mwunsch/weary.git
-  revision: cdff74b678e254de757d406ee2def4c07cd24f5b
+  revision: 9a9db72c2672fccfe976f4c5fc89f9ea5fa2deb5
   specs:
     weary (1.0.0.pre)
       addressable (~> 2.2.6)

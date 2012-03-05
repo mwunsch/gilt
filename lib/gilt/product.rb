@@ -68,11 +68,61 @@ module Gilt
       @product["skus"].map {|sku| Sku.new(sku) }
     end
 
+    def min_price
+      sorted_price.last
+    end
+
+    def max_price
+      sorted_price.first
+    end
+
+    def price_range
+      [min_price, max_price]
+    end
+
+    def format_price
+      range = price_range
+      return max_price.format if range.first == range.last
+      price_range.map {|price| price.format }.join(" - ")
+    end
+
+    def images
+      @product["image_urls"]
+    end
+
+    def colors
+      skus.map {|sku| sku.attributes[:color] }.uniq
+    end
+
+    def sizes
+      skus.map {|sku| sku.attributes[:size] }.uniq
+    end
+
+    def skus_of_size(size)
+      skus.select {|sku| sku.attributes[:size] == size }
+    end
+
+    def skus_of_color(color)
+      skus.select {|sku| sku.attributes[:color] == color }
+    end
+
+    def select_sku(size, color)
+      ids = skus_of_color(color).map(&:id) & skus_of_size(size).map(&:id)
+      skus.find {|sku| sku.id == ids.first } if ids.size > 0
+    end
+
     private
 
     def fetch_content(key)
       content = @product["content"]
       content[key.to_s] unless content.nil?
     end
+
+    def sorted_price
+      set = skus.map(&:sale_price).uniq
+      return set if set.size == 1
+      set.sort
+    end
+
   end
 end

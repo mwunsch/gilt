@@ -111,5 +111,78 @@ describe Gilt::Product do
   end
 
   describe "#images" do
+    it "returns the mapping of image urls" do
+      product = described_class.create("a-product-id", @apikey)
+      product.images.should have_key "91x121"
+    end
+  end
+
+  describe "#min_price" do
+    it "returns the min price of the skus" do
+      product = described_class.create("a-product-id", @apikey)
+      product.min_price.to_s.should eql "98.00"
+    end
+  end
+
+  describe "#max_price" do
+    it "returns the max price of the skus" do
+      product = described_class.create("a-product-id", @apikey)
+      product.min_price.to_s.should eql "98.00"
+    end
+  end
+
+  describe "#price_range" do
+    it "returns a tuple of the min and max price" do
+      product = described_class.create("a-product-id", @apikey)
+      product.price_range.should eql [product.min_price, product.max_price]
+    end
+  end
+
+  describe "#format_price" do
+    it "prints the price range of the product, or if both min and max are equal, the price" do
+      product = described_class.create("a-product-id", @apikey)
+      product.format_price.should eql "$98.00"
+    end
+  end
+
+  describe "#colors" do
+    it "returns a set of all the possible colors for the product" do
+      product = described_class.create("a-product-id", @apikey)
+      product.colors.first.should match /selvedge/
+    end
+  end
+
+  describe "#sizes" do
+    it "returns a set of all the possible sizes for the product" do
+      product = described_class.create("a-product-id", @apikey)
+      product.sizes.length.should eql product.skus.length
+    end
+  end
+
+  describe "#skus_of_size" do
+    it "select the skus of the given size" do
+      product = described_class.create("a-product-id", @apikey)
+      first_size = product.sizes.first
+      sku_set = product.skus_of_size first_size
+      sku_set.all? {|sku| sku.attributes[:size] == first_size }.should be_true
+    end
+  end
+
+  describe "#skus_of_color" do
+    it "selects the skus of the given color" do
+      product = described_class.create("a-product-id", @apikey)
+      first_color = product.colors.first
+      sku_set = product.skus_of_color first_color
+      sku_set.all? {|sku| sku.attributes[:color] == first_color }.should be_true
+    end
+  end
+
+  describe "#select_sku" do
+    it "selects a sku given a size and a color" do
+      product = described_class.create("a-product-id", @apikey)
+      last_size = product.sizes.last
+      first_color = product.colors.first
+      product.select_sku(last_size, first_color).attributes[:size].should eql last_size
+    end
   end
 end

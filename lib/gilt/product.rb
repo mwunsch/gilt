@@ -99,16 +99,44 @@ module Gilt
     end
 
     def skus_of_size(size)
-      skus.select {|sku| sku.attributes[:size] == size }
+      skus_with_attribute :size, size
     end
 
     def skus_of_color(color)
-      skus.select {|sku| sku.attributes[:color] == color }
+      skus_with_attribute :color, color
     end
 
-    def select_sku(size, color)
-      ids = skus_of_color(color).map(&:id) & skus_of_size(size).map(&:id)
+    def skus_with_attribute(attribute, value)
+      skus.select {|sku| !!sku.attributes[attribute.intern].match(value) }
+    end
+
+    def select_sku(attributes)
+      attribute_map = attributes.map {|k, v| skus_with_attribute(k, v).map(&:id) }
+      ids = attribute_map.reduce(:&)
       skus.find {|sku| sku.id == ids.first } if ids.size > 0
+    end
+
+    def inventory_status
+      sku_inventory = skus.map(&:inventory_status).uniq
+      if sku_inventory.include? Gilt::Sku::FOR_SALE
+        Gilt::Sku::FOR_SALE
+      elsif sku_inventory.all? {|status| status == Gilt::Sku::RESERVED}
+        Gilt::Sku::RESERVED
+      else
+        Gilt::Sku::SOLD_OUT
+      end
+    end
+
+    def for_sale?
+      inventory_status == Gilt::Sku::FOR_SALE
+    end
+
+    def sold_out?
+      inventory_status == Gilt::Sku::SOLD_OUT
+    end
+
+    def reserved?
+      inventory_status == Gilt::Sku::RESERVED
     end
 
     private

@@ -177,12 +177,29 @@ describe Gilt::Product do
     end
   end
 
+  describe "#skus_with_attribute" do
+    it "selects the skus with the given attribute and value" do
+      product = described_class.create("a-product-id", @apikey)
+      first_size = product.sizes.first
+      sku_set = product.skus_with_attribute(:size, first_size)
+      sku_set.all? {|sku| sku.attributes[:size] == first_size}.should be_true
+
+    end
+  end
+
   describe "#select_sku" do
     it "selects a sku given a size and a color" do
       product = described_class.create("a-product-id", @apikey)
       last_size = product.sizes.last
       first_color = product.colors.first
-      product.select_sku(last_size, first_color).attributes[:size].should eql last_size
+      product.select_sku(:size => last_size, :color => first_color).attributes[:size].should eql last_size
+    end
+  end
+
+  describe "#inventory_status" do
+    it "returns the most optimistic inventory status for the product" do
+      product = described_class.create("a-product-id", @apikey)
+      product.inventory_status.should eql Gilt::Sku::FOR_SALE
     end
   end
 end

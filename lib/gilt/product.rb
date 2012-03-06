@@ -82,8 +82,8 @@ module Gilt
 
     def format_price
       range = price_range
-      return max_price.format if range.first == range.last
-      price_range.map {|price| price.format }.join(" - ")
+      return range.first.format if range.first == range.last
+      price_range.map(&:format).join(" - ")
     end
 
     def images

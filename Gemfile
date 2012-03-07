@@ -10,3 +10,7 @@ group :test do
   gem "rspec", "~> 2.8.0"
   gem "webmock", "~> 1.7.10"
 end
+
+platforms :jruby do
+  gem "jruby-openssl", "~> 0.7.6"
+end

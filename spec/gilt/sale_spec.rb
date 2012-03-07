@@ -5,7 +5,8 @@ describe Gilt::Sale do
     @apikey = "my-api-key"
     @affid = "my-affiliate-id"
     @sale_key = "shoshanna-019"
-    stub_request(:any, /api\.gilt\.com\/.+\/detail\.json/).to_return fixture('sale_detail.json')
+    stub_request(:any, /api\.gilt\.com\/.+\/sales\/.+\/detail\.json/).to_return fixture('sale_detail.json')
+    stub_request(:any, /api\.gilt\.com\/.+\/products\/.+\/detail\.json/).to_return fixture('product.json')
   end
 
   describe "::client" do
@@ -124,7 +125,7 @@ describe Gilt::Sale do
     end
 
     it "returns a map of product requests" do
-      @sale.products.should be_all {|p| p.is_a? Weary::Request }
+      @sale.products.should be_all {|p| p.is_a? Gilt::Product }
     end
 
   end

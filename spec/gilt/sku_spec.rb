@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'gilt/sku'
 
 describe Gilt::Sku do
   before do

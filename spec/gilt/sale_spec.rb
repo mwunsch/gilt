@@ -127,6 +127,16 @@ describe Gilt::Sale do
     it "returns a map of product requests" do
       @sale.products.should be_all {|p| p.is_a? Gilt::Product }
     end
+  end
+
+  describe "#length" do
+    before do
+      @sale = described_class.create(Gilt::Stores::WOMEN, @sale_key, @apikey)
+    end
+
+    it "returns the size of the products array" do
+      @sale.length.should eq @sale.products.length
+    end
 
   end
 

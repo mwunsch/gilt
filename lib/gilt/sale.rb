@@ -81,5 +81,9 @@ module Gilt
       end
     end
 
+    def length
+      return products.length
+    end
+
   end
 end

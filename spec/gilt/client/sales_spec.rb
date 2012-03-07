@@ -28,7 +28,7 @@ describe Gilt::Client::Sales do
 
   describe "#active_in_store" do
     it "generates a request to fetch active sales in a given store" do
-      active = @client.active_in_store :store => Gilt::Client::Sales::WOMEN
+      active = @client.active_in_store :store => Gilt::Stores::WOMEN
       active.uri.to_s.should match "/sales/women/active"
     end
 
@@ -45,7 +45,7 @@ describe Gilt::Client::Sales do
 
   describe "#upcoming_in_store" do
     it "generates a request to fetch upcoming sales in a given store" do
-      upcoming = @client.upcoming_in_store :store => Gilt::Client::Sales::WOMEN
+      upcoming = @client.upcoming_in_store :store => Gilt::Stores::WOMEN
       upcoming.uri.to_s.should match "/sales/women/upcoming"
     end
 
@@ -56,16 +56,16 @@ describe Gilt::Client::Sales do
 
   describe "#detail" do
     it "generates a request to fetch details of a particular sale" do
-      details = @client.detail :store => Gilt::Client::Sales::WOMEN, :sale_key => "a-dress-sale"
+      details = @client.detail :store => Gilt::Stores::WOMEN, :sale_key => "a-dress-sale"
       details.uri.to_s.should match "/sales/women/a-dress-sale/detail"
     end
 
     it "raises an error when sale key is not passed in" do
-      expect { @client.detail :store => Gilt::Client::Sales::WOMEN }.to raise_error
+      expect { @client.detail :store => Gilt::Stores::WOMEN }.to raise_error
     end
   end
 
-  [Gilt::Client::Sales::WOMEN, Gilt::Client::Sales::MEN, Gilt::Client::Sales::KIDS, Gilt::Client::Sales::HOME].each do |store|
+  [Gilt::Stores::WOMEN, Gilt::Stores::MEN, Gilt::Stores::KIDS, Gilt::Stores::HOME].each do |store|
     describe "#active_in_#{store}" do
       it "generates a dynamic method for the store" do
         @client.should respond_to "active_in_#{store}".intern

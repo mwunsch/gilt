@@ -3,11 +3,6 @@ require "gilt/client"
 module Gilt
   class Client
     class Sales < Gilt::Client
-      WOMEN = :women
-      MEN   = :men
-      KIDS  = :kids
-      HOME  = :home
-
       domain DOMAIN
 
       required :apikey
@@ -24,7 +19,10 @@ module Gilt
 
       get :detail, "/sales/:store/:sale_key/detail.#{FORMAT}"
 
-      [WOMEN, MEN, KIDS, HOME].each do |store|
+      [ Gilt::Stores::WOMEN,
+        Gilt::Stores::MEN,
+        Gilt::Stores::KIDS,
+        Gilt::Stores::HOME ].each do |store|
         define_method "active_in_#{store}" do |params={}, &block|
           active_in_store params.merge({:store => store}), &block
         end

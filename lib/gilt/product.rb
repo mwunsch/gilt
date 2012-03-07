@@ -1,5 +1,6 @@
 module Gilt
   autoload :Sku, "gilt/sku"
+
   class Product
 
     def self.client(apikey, affid=nil)

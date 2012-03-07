@@ -113,7 +113,7 @@ module Gilt
     end
 
     def skus_with_attribute(attribute, value)
-      skus.select {|sku| !!sku.attributes[attribute.intern].match(value) }
+      skus.select {|sku| !!sku.attributes[attribute.to_sym].match(value) }
     end
 
     def select_sku(attributes)

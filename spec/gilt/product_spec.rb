@@ -7,6 +7,13 @@ describe Gilt::Product do
     stub_request(:any, /api\.gilt\.com\/.*/).to_return fixture('product.json')
   end
 
+  describe "::defer" do
+    it "asynchronously defers the product instantiation" do
+      detail = described_class.detail("a-product-id", @apikey)
+      described_class.defer(detail.perform).class.should be described_class
+    end
+  end
+
   describe "::client" do
     it "creates a new instance of the Products client" do
       described_class.client(@apikey, @affid).should be_kind_of Gilt::Client::Products

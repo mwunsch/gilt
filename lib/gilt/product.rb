@@ -3,6 +3,11 @@ module Gilt
 
   class Product
 
+    def self.defer(future)
+      require 'weary/deferred'
+      Weary::Deferred.new future, self, lambda {|product, response| product.new(response.parse) }
+    end
+
     def self.client(apikey, affid=nil)
       Gilt::Client::Products.new(apikey, affid)
     end

@@ -87,14 +87,14 @@ describe Gilt::Sku do
   describe "#msrp_price" do
     it "returns the price as a Money object" do
       sku = Gilt::Sku.new MultiJson.decode(@json)
-      sku.msrp_price.should be_kind_of Money
+      sku.msrp_price.should be_kind_of ::Money
     end
   end
 
   describe "#sale_price" do
     it "returns the price as a Money object" do
       sku = Gilt::Sku.new MultiJson.decode(@json)
-      sku.sale_price.should be_kind_of Money
+      sku.sale_price.should be_kind_of ::Money
     end
   end
 
@@ -105,7 +105,7 @@ describe Gilt::Sku do
 
     it "returns the surcharge as a Money object" do
       sku = Gilt::Sku.new @sku_body
-      sku.shipping_surcharge.should be_kind_of Money
+      sku.shipping_surcharge.should be_kind_of ::Money
     end
 
     it "is zero dollars when there is no surcharge" do

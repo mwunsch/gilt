@@ -1,6 +1,6 @@
+autoload :Money, "money"
 module Gilt
   class Sku
-    autoload :Money, "money"
 
     CURRENCY = "USD"
     FOR_SALE = "for sale"
@@ -62,7 +62,7 @@ module Gilt
     private
 
     def to_dollars(price)
-      Money.from_string(price, CURRENCY)
+      ::Money.from_string(price, CURRENCY)
     end
   end
 end

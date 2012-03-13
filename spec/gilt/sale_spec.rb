@@ -6,6 +6,7 @@ describe Gilt::Sale do
     @affid = "my-affiliate-id"
     @sale_key = "shoshanna-019"
     stub_request(:any, /api\.gilt\.com\/.+\/sales\/.+\/detail\.json/).to_return fixture('sale_detail.json')
+    stub_request(:any, /api\.gilt\.com\/.+\/sales\/.*(active|upcoming)\.json/).to_return fixture('active.json')
     stub_request(:any, /api\.gilt\.com\/.+\/products\/.+\/detail\.json/).to_return fixture('product.json')
   end
 
@@ -15,17 +16,19 @@ describe Gilt::Sale do
     end
   end
 
-  describe "::detail" do
-    it "creates an instance of Sale from the sale response" do
-      detail = described_class.detail(Gilt::Stores::WOMEN, @sale_key, @apikey)
-      detail.should be_kind_of Weary::Request
-    end
-  end
-
   describe "::create" do
     it "creates an instance of Sale from the request response" do
       sale = described_class.create(Gilt::Stores::WOMEN, @sale_key, @apikey)
       sale.should be_instance_of described_class
+    end
+  end
+
+  Gilt::Client::Sales.resources.keys.each do |key|
+    describe "::#{key}" do
+      it "creates a set of instances of Sale" do
+        set = described_class.send(key, :store => Gilt::Stores::WOMEN, :sale_key => @sale_key, :apikey => @apikey)
+        set.should be_all {|sale| sale.is_a? described_class }
+      end
     end
   end
 

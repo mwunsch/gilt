@@ -2,6 +2,24 @@ require 'time'
 
 module Gilt
   class Sale
+    class << self
+      Gilt::Client::Sales.resources.keys.each do |key|
+        define_method key do |params, &block|
+          args = params || {}
+          apikey = args[:apikey]
+          affid = args[:affid]
+          products = product_client apikey, affid
+          req = client(apikey, affid).send(key.to_sym, args)
+          response = req.perform.parse
+          if response["sales"].nil?
+            [self.new(response, products)]
+          else
+            response["sales"].map {|sale| self.new(sale, products)}
+          end
+        end
+      end
+    end
+
     def self.client(apikey, affid=nil)
       Gilt::Client::Sales.new(apikey, affid)
     end
@@ -10,14 +28,8 @@ module Gilt
       Gilt::Client::Products.new(apikey, affid)
     end
 
-    def self.detail(store, sale_key, apikey, affid=nil)
-      client(apikey, affid).detail :store => store,
-                                   :sale_key => sale_key
-    end
-
     def self.create(store, sale_key, apikey, affid=nil)
-      response = detail(store, sale_key, apikey, affid).perform
-      self.new response.parse, product_client(apikey, affid)
+      detail(:store => store, :sale_key => sale_key, :apikey => apikey, :affid => affid).first
     end
 
     def initialize(sale_body, client=nil)

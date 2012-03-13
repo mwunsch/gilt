@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/mwunsch/weary.git
-  revision: f0d2e36012265aac730ee04abd02acefcb293662
+  revision: cac6e030045e705c3165b470419701d88b12506e
   specs:
-    weary (1.0.0.pre)
+    weary (1.0.0.rc1)
       addressable (~> 2.2.6)
       multi_json (~> 1.1.0)
       promise (~> 0.3.0)

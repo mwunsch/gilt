@@ -22,7 +22,7 @@ womens_sales = sales.select {|sale| sale.store == Gilt::Stores::WOMEN }
 sales.products.map(&:name)
 ```
 
-Above, the call to `sales.products` returns a list of [Weary::Deferred](https://github.com/mwunsch/weary/blob/master/lib/weary/deferred.rb) objects wrapping Gilt::Product objects. This means that fetching the product is fully asynchronous, and only blocks when accessed.
+Above, the call to `sales.products` returns a list of [Weary::Deferred](https://github.com/mwunsch/weary/blob/master/lib/weary/deferred.rb) objects wrapping Gilt::Product objects. This means that fetching the product is asynchronous, and only blocks when accessed.
 
 ### With Rack
 

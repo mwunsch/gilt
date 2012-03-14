@@ -28,7 +28,7 @@ Above, the call to `sales.products` returns a list of [Weary::Deferred](https://
 
 ```ruby
 # config.ru
-client = Gilt::Client::Product.new "my-api-key", "my-affiliate-id"
+client = Gilt::Client::Product
 client.use Rack::Runtime
 
 run client
@@ -36,4 +36,4 @@ run client
 
 After `rackup`:
 
-    curl "http://localhost:9292/sales/active.json"
+    curl "http://localhost:9292/sales/active.json?apikey=my-api-key"

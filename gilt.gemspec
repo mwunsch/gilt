@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency "money", "~> 4.0.2"
-  s.add_runtime_dependency "weary", "~> 1.0.0.rc1"
+  s.add_runtime_dependency "weary", "~> 1.0.0"
 end

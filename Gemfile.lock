@@ -3,7 +3,7 @@ PATH
   specs:
     gilt-rb (0.0.1)
       money (~> 4.0.2)
-      weary (~> 1.0.0.rc1)
+      weary (~> 1.0.0)
 
 GEM
   remote: http://rubygems.org/
@@ -15,8 +15,8 @@ GEM
     i18n (0.6.0)
     jruby-openssl (0.7.6.1)
       bouncy-castle-java (>= 1.5.0146.1)
-    json (1.6.5)
-    json (1.6.5-java)
+    json (1.6.6)
+    json (1.6.6-java)
     money (4.0.2)
       i18n (~> 0.4)
       json
@@ -33,8 +33,8 @@ GEM
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.9.0)
     simple_oauth (0.1.5)
-    weary (1.0.0.rc1)
-      addressable (~> 2.2.6)
+    weary (1.0.0)
+      addressable (~> 2.2.7)
       multi_json (~> 1.1.0)
       promise (~> 0.3.0)
       rack (~> 1.4.0)

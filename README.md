@@ -37,3 +37,7 @@ run client
 After `rackup`:
 
     curl "http://localhost:9292/sales/active.json?apikey=my-api-key"
+
+## Installation
+
+    gem install gilt

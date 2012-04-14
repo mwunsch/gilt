@@ -88,7 +88,6 @@ module Gilt
       resource = Gilt::Client::Products.resources[:detail]
       @products = (@sale["products"] || []).map do |product|
         id = resource.url.extract(product)["product_id"]
-        @client.detail(:product_id => id).perform
         Product.defer @client.detail(:product_id => id).perform
       end
     end

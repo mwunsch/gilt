@@ -1,6 +1,7 @@
 require 'time'
 
 module Gilt
+  # A Gilt Sale object, representing an active or upcoming "flash" sale.
   class Sale
     class << self
       Gilt::Client::Sales.resources.keys.each do |key|

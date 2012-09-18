@@ -17,6 +17,7 @@ It's written with the [Weary](https://github.com/mwunsch/weary) framework, so it
 [![Build Status](https://secure.travis-ci.org/mwunsch/gilt.png)](http://travis-ci.org/mwunsch/gilt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/mwunsch/gilt)
 
 * [Gilt on RubyGems.org](https://rubygems.org/gems/gilt)
+* [Gilt on RubyDoc.info](http://rubydoc.info/github/mwunsch/gilt/)
 * [Gilt on Travis CI](http://travis-ci.org/#!/mwunsch/gilt)
 * [Gilt on Code Climate](https://codeclimate.com/github/mwunsch/gilt)
 

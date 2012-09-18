@@ -21,6 +21,11 @@ module Gilt
       self.new response.parse
     end
 
+    def self.categories(apikey, affid=nil)
+      response = client(apikey, affid).categories.perform
+      response.parse["categories"] || []
+    end
+
     def initialize(product_body)
       @product = product_body
     end

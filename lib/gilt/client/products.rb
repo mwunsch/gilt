@@ -10,6 +10,8 @@ module Gilt
       optional :affid
 
       get :detail, "/products/:product_id/detail.#{FORMAT}"
+
+      get :categories, "/products/categories.#{FORMAT}"
     end
   end
 end

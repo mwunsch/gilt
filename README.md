@@ -14,11 +14,11 @@ It's written with the [Weary](https://github.com/mwunsch/weary) framework, so it
 * Full Rack integration. The Client to the library is a Rack application.
 * Fully asynchronous. `gilt` makes liberal use of futures and Weary::Deferred.
 
+[![Build Status](https://secure.travis-ci.org/mwunsch/gilt.png)](http://travis-ci.org/mwunsch/gilt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/mwunsch/gilt)
+
 * [Gilt on RubyGems.org](https://rubygems.org/gems/gilt)
 * [Gilt on Travis CI](http://travis-ci.org/#!/mwunsch/gilt)
 * [Gilt on Code Climate](https://codeclimate.com/github/mwunsch/gilt)
-
-[![Build Status](https://secure.travis-ci.org/mwunsch/gilt.png)](http://travis-ci.org/mwunsch/gilt)
 
 ## Examples
 
@@ -59,10 +59,9 @@ Here's a fun one, for all active sales in the Women store, create a hash of `Sal
 ```ruby
 require "pp"
 
-active_sales = Gilt::Sale.active_in_store :apikey => "my-key", :store => Gilt::Stores::WOMEN
+active_sales = Gilt::Sale.active_in_store :apikey => "my-api-key", :store => Gilt::Stores::WOMEN
 pp Hash[active_sales.map {|sale| [sale.name, sale.products.map(&:name)] }] # This could take a while
-```ruby
-
+```
 
 ### With Rack
 
@@ -83,8 +82,6 @@ After `rackup`:
 ## Installation
 
     gem install gilt
-
-
 
 ## Copyright
 

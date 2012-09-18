@@ -30,4 +30,11 @@ describe Gilt::Client::Products do
       expect { @client.detail }.to raise_error Weary::Resource::UnmetRequirementsError
     end
   end
+
+  describe "#categories" do
+    it "generates a request to get the categories of active products" do
+      categories = @client.categories
+      categories.uri.to_s.should match "/categories.json"
+    end
+  end
 end

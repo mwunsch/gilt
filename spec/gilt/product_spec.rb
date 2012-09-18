@@ -4,7 +4,8 @@ describe Gilt::Product do
   before do
     @apikey = "my-api-key"
     @affid = "my-affiliate-id"
-    stub_request(:any, /api\.gilt\.com\/.*/).to_return fixture('product.json')
+    stub_request(:any, /api\.gilt\.com\/.*detail.*/).to_return fixture('product.json')
+    stub_request(:any, /api\.gilt\.com\/.*categories.*/).to_return fixture('categories.json')
   end
 
   describe "::defer" do
@@ -30,6 +31,13 @@ describe Gilt::Product do
   describe "::create" do
     it "creates an instance of Product from the request response" do
       described_class.create("a-product-id", @apikey).should be_instance_of described_class
+    end
+  end
+
+  describe "::categories" do
+    it "gets a list of active product categories" do
+      categories = described_class.categories(@apikey, @affid)
+      categories.length.should eql 130
     end
   end
 

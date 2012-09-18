@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Server: Jetty(7.6.0.v20120127)
+Cache-Control: no-transform, max-age=600
+Content-Type: application/json; charset=UTF-8
+response-time: 91.0
+X-Gg-Rule-cdn: cdn_req_check_ssl_api
+Last-Modified: Tue, 18 Sep 2012 15:33:49 GMT
+X-Version: svc-syndication-0.3.5 (commons-1.2.1)
+Age: 214
+Content-Length: 2068
+
+{"categories":["Pants","Shirts","Tabletop","Other Lighting","Jewelry & Watches","Puffers & Parkas","Clothing","Other Apparel","Floor Lamps","Coffee, Tea & Espresso","Sofas","Peacoats","Necklaces & Rings","Sweaters & Hoodies","Other Home","Sportcoats","Drinkware","Chairs & Ottomans","Area","Earrings","Rugs","Furniture & Decor","Dress Shirts","Women","Girls' Shoes & Socks","Kitchenware","Equipment","Sheets & Pillowcases","Card Holders","Sandals","Denim","Ties & Furnishings","Sleepwear","Men","Glasses & Barware","Crewnecks","Other Decor & Accessories","Slim Leg","Socks, Underwear & Sleepwear","Apparel Sets","Other Outerwear","Other Bags & Luggage","Other Tops","Other Accessories","Polos, Henleys & Tees","Bracelets & Bangles","Boys' Shoes & Socks","Crewneck","Health & Beauty","Jewelry & Cufflinks","Home Decor","Outerwear","Outdoor Living","Accent","Sneakers","One Pieces","Accessories","Other Pants","Gadgets & Equipment","Bedcovers","Dress Pants","Sweaters","Decor & Accessories","Lifestyle & Gear","Home","Table & Desk Lamps","Underwear & Loungewear","Outdoor Furniture","Bedding","Bags & Luggage","V-Necks","Boots","Furniture","Appliances","Office Accessories","Shoes","Art","Polos, Tees & Sport Shirts","Maternity","Bedding & Bath","Jackets","Gadgets","Suits & Sportcoats","Cook & Bakeware","Necklaces & Pendants","Gear & Equipment","Chandeliers & Pendants","Dresses & Skirts","Pants & Shorts","Apparel","Makeup","Cords","Trays & Bowls","Suits","Home Office & Books","Boys' Apparel & Accessories","Dining & Servingware","Ties","Henleys","Rings","Other Denim","Trench & Raincoats","Towels & Bath Rugs","Watches & Jewelry","Skirts","Cardigans","Toys, Games & Books","Ties, Pocket Squares & More","Lighting","Socks","Girls' Apparel & Accessories","Dresses","Other Shirts","Long Sleeve Sport Shirts","Wallets & Small Leather Goods","Accent Tables","Mirrors & Frames","Children","Shirts & Sweaters","Cookware & Bakeware","Bath","Leather Jackets","Wallets","Pillows","Bar Accessories","Footwear","Hoodies","Other Furniture","Kitchen & Dining","Jackets & Vests"]}

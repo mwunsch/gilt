@@ -45,6 +45,9 @@ module Gilt
       URI(@product["url"])
     end
 
+    def categories
+      @product["categories"] || []
+    end
     def description
       fetch_content :description
     end

@@ -36,21 +36,21 @@ describe Gilt::Product do
   describe "#name" do
     it "returns the product's name" do
       product = described_class.create("a-product-id", @apikey)
-      product.name.should eql "501 Classic Jeans"
+      product.name.should eql "514 Slim Jeans"
     end
   end
 
   describe "#product" do
     it "returns a URI representation of the product's endpoint" do
       product = described_class.create("a-product-id", @apikey)
-      product.product.to_s.should eql "https://api.gilt.com/v1/products/73794579/detail.json"
+      product.product.to_s.should eql "https://api.gilt.com/v1/products/73794592/detail.json"
     end
   end
 
   describe "#id" do
     it "returns the id of the product" do
       product = described_class.create("a-product-id", @apikey)
-      product.id.should eql 73794579
+      product.id.should eql 73794592
     end
   end
 
@@ -64,14 +64,22 @@ describe Gilt::Product do
   describe "#url" do
     it "returns a URI representation of the product's detail page" do
       product = described_class.create("a-product-id", @apikey)
-      product.url.to_s.should match "www.gilt.com/m/public/look/"
+      product.url.to_s.should match "www.gilt.com/sale/men/"
+    end
+  end
+
+  describe "#categories" do
+    it "returns an array of strings of categories in which this product belongs" do
+      product = described_class.create("a-product-id", @apikey)
+      product.categories.should include "Denim"
+
     end
   end
 
   describe "#description" do
     it "returns the product description" do
       product = described_class.create("a-product-id", @apikey)
-      product.description.should match /^five pocket straight leg/i
+      product.description.should match /^five pocket cotton slim leg/i
     end
   end
 
@@ -127,14 +135,14 @@ describe Gilt::Product do
   describe "#min_price" do
     it "returns the min price of the skus" do
       product = described_class.create("a-product-id", @apikey)
-      product.min_price.to_s.should eql "98.00"
+      product.min_price.to_s.should eql "68.00"
     end
   end
 
   describe "#max_price" do
     it "returns the max price of the skus" do
       product = described_class.create("a-product-id", @apikey)
-      product.min_price.to_s.should eql "98.00"
+      product.min_price.to_s.should eql "68.00"
     end
   end
 
@@ -148,14 +156,14 @@ describe Gilt::Product do
   describe "#format_price" do
     it "prints the price range of the product, or if both min and max are equal, the price" do
       product = described_class.create("a-product-id", @apikey)
-      product.format_price.should eql "$98.00"
+      product.format_price.should eql "$68.00"
     end
   end
 
   describe "#colors" do
     it "returns a set of all the possible colors for the product" do
       product = described_class.create("a-product-id", @apikey)
-      product.colors.first.should match /selvedge/
+      product.colors.first.should match /rumpled/
     end
   end
 

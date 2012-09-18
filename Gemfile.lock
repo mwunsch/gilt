@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gilt (0.1.0)
+    gilt (0.2.0)
       money (~> 4.0.2)
       weary (~> 1.1.0)
 
